@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="CSSfile.css" media="screen" /> 
+    <title>Calculator</title>
+</head>
+<body>
+    
+</body>
+    <h1 class="animate__animated animate__bounce">Multiply numbers!</h1>
+    <input type="text" name = "input_field" type="string" id="box">
+    <tr>
+    <input type="text" name = "input_field_2" type="string" id="multipler">
+</tr>
+    <input style="background-color: rgba(0, 96, 116, 0.341)" type="button" value = "calculate" id="number"/>
+    <br>
+    <h3><output type="text" name = "text_field" type="string" id="result"></h3>
+    <h2>Work in progress</h2>
+    <script>
+        document.getElementById('result').value = 'result:'
+        function add(){
+            let number = parseFloat(document.getElementById("box").value)
+            let multipler = parseFloat(document.getElementById("multipler").value)
+            let result = number * multipler
+            document.getElementById("result").value = "result:" + result
+        }
+        let number = document.getElementById("number");
+        number.addEventListener("click", add)
+        document.addEventListener('keyup', (event) => {
+            if(event.key == "Enter"){
+                add()
+            }
+        });
+    </script>
+</html>

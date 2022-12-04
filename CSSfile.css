@@ -1,0 +1,20 @@
+/* TEXTS */
+body {
+    background-color: #e4f0ff;
+    }
+h1,
+.h1 {
+    animation-delay: 500ms;
+
+    font-family: 'Brush Script MT', cursive;
+    font-size: 60px;
+    margin-left: 500px;
+}
+h2,
+.h2 {
+  margin-left: 700px;
+}
+h3,
+.h3 {
+  margin-left: 10px;
+}
