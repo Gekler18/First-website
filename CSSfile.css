@@ -1,20 +1,26 @@
 /* TEXTS */
 body {
-    background-color: #e4f0ff;
+    background-image: url("Background.jpg");
     }
 h1,
 .h1 {
     animation-delay: 500ms;
 
+    color: rgba(140, 224, 223, 0.943);
     font-family: 'Brush Script MT', cursive;
     font-size: 60px;
     margin-left: 35%;
+    text-shadow: 2px 2px #dce7e8;
 }
 h2,
 .h2 {
   margin-left: 40%;
+  color: rgba(140, 224, 223, 0.943);
+  text-shadow: 2px 2px #dce7e8;
 }
 h3,
 .h3 {
   margin-left: 1%;
+  color: rgba(140, 224, 223, 0.943);
+  text-shadow: 1px 1px #dce7e8;
 }
