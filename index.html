@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-</head>
-<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,20 +11,22 @@
 <body>
     <h1 class="animate__animated animate__bounce">Multiply numbers!</h1>
     <p>
-    <!--  <img class="picture" src="Elon2.png" style="float:right;width: 500px;" alt="This is Elon Musk 'poor internet connection'"/>  -Future me do something about this -->  
-    <input style="color: rgba(0, 11, 217, 0.969); text-shadow: 1px 1px #dce7e8; background-image: url('input-background.png'); background-size: 300%;" type="text" name = "input_field" type="string" id="box">
-
-    <input style="color: rgba(0, 11, 217, 0.969); text-shadow: 1px 1px #dce7e8; background-image: url('input-background.png'); background-size: 500%;" stype="text" name = "input_field_2" type="string" id="multipler">
-
-    <input style="background-color:rgba(140, 224, 223, 0.943)" type="button" value = "calculate" id="number"/>
-    <br>
-
-    <h3><output type="text" name = "text_field" type="string" id="result"></h3>
-    <audio controls>
-        <source src="Calculating noises.mp3">
-    </audio>
+        <input style="color: rgba(0, 11, 217, 0.969); text-shadow: 1px 1px #dce7e8; background-image: url('input-background.png'); background-size: 300%;" type="text" name="input_field" type="string" id="box">
+        <input style="color: rgba(0, 11, 217, 0.969); text-shadow: 1px 1px #dce7e8; background-image: url('input-background.png'); background-size: 500%;" type="text" name="input_field_2" type="string" id="multipler">
+        <input style="background-color:rgba(140, 224, 223, 0.943)" type="button" value="calculate" id="number">
+        <br>
+        <h3><output type="text" name="text_field" type="string" id="result"></output></h3>
+        <audio controls>
+            <source src="Calculating noises.mp3">
+        </audio>
     </p>
     <br>
+    <br>
+    <br>
+    <br>
+    <input style="color: rgba(0, 11, 217, 0.969); text-shadow: 1px 1px #dce7e8; background-image: url('input-background.png'); background-size: 300%;" type="text" id="cityInput" placeholder="Enter city name">
+    <button id="getWeatherButton">Get Weather</button>
+    <h3 id="weatherInfo" ></h3>
     <br>
     <br>
     <br>
@@ -41,23 +38,50 @@
     <br>
     <br>
     <h2>Work in progress</h2>
-</body>
-    
 
     <script>
-        document.getElementById('result').value = 'result:'
-        function add(){
-            let number = parseFloat(document.getElementById("box").value)
-            let multipler = parseFloat(document.getElementById("multipler").value)
-            let result = number * multipler
-            document.getElementById("result").value = "result:" + result
+        document.getElementById('weatherInfo').innerText = "Weather:"
+        document.getElementById('result').value = 'result:';
+        function add() {
+            let number = parseFloat(document.getElementById("box").value);
+            let multiplier = parseFloat(document.getElementById("multipler").value);
+            let result = number * multiplier;
+            document.getElementById("result").value = "result:" + result;
         }
-        let number = document.getElementById("number");
-        number.addEventListener("click", add)
+        let calculateButton = document.getElementById("number");
+        calculateButton.addEventListener("click", add);
         document.addEventListener('keyup', (event) => {
-            if(event.key == "Enter"){
-                add()
+            if (event.key == "Enter") {
+                add();
             }
         });
+
+        function getWeather() {
+            const apiKey = '8216f6e872dec38b0b49b3875a9991e2';
+            const city = document.getElementById('cityInput').value;
+
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+                .then((response) => response.json())
+                .then((data) => {
+                    const temperature = data.main.temp;
+                    const description = data.weather[0].description;
+                    const weatherInfo = `Temperature: ${temperature}°C, Description: ${description}`;
+
+                    document.getElementById('weatherInfo').innerText = "Weather: " + weatherInfo;
+                })
+                .catch((error) => {
+                    console.log('Error:', error);
+                    document.getElementById('weatherInfo').innerText = 'Failed to retrieve weather data. Check your spelling.';
+                });
+        }
+
+        document.getElementById('getWeatherButton').addEventListener('click', getWeather);
+        document.getElementById('cityInput').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                getWeather();
+            }
+        });
+
     </script>
+</body>
 </html>
