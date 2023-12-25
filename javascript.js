@@ -1,14 +1,14 @@
+console.log("This works")
+
 document.getElementById('result').value = 'result:';
 
 function add() {
     let number = parseFloat(document.getElementById("box").value);
-    let multiplier = parseFloat(document.getElementById("multipler").value);
-    let result = number * multiplier;
-    document.getElementById("result").value = "result:" + result;
+    let multipler = parseFloat(document.getElementById("multipler").value);
+    let result = number * multipler;
+    document.getElementById("result").value = "result: " + result;
+    document.getElementById('weatherInfo').innerText = "Weather:";
 }
-
-document.getElementById('weatherInfo').innerText = "Weather:";
-document.getElementById('result').value = 'result:';
 
 let number = document.getElementById("number");
 number.addEventListener("click", add);
