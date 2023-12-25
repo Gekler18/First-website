@@ -1,5 +1,3 @@
-console.log("This works")
-
 document.getElementById('result').value = 'result:';
 
 function add() {
